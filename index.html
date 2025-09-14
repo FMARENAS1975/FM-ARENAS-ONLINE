@@ -3,163 +3,222 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>FM ARENAS ONLINE - La Rioja, Argentina</title>
-  <link rel="icon" type="image/png" href="favicon.png">
+  <title>Mi Landing Page</title>
   <style>
-    @keyframes neonPulse {
-      0%, 100% { text-shadow: 0 0 5px #00eaff, 0 0 10px #00eaff, 0 0 20px #ff00cc; }
-      50% { text-shadow: 0 0 15px #ff00cc, 0 0 30px #00eaff; }
-    }
-    @keyframes glow {
-      0%, 100% { box-shadow: 0 0 10px #00eaff, 0 0 20px #ff00cc; }
-      50% { box-shadow: 0 0 20px #ff00cc, 0 0 40px #00eaff; }
-    }
     body {
-      font-family: 'Arial', sans-serif;
+      font-family: Arial, sans-serif;
       margin: 0;
-      background: #000;
-      color: white;
+      background: #f9fafb;
+      color: #333;
+      scroll-behavior: smooth;
     }
-    header {
-      background: url('banner.png') no-repeat center center;
-      background-size: cover;
-      text-align: center;
-      padding: 80px 20px;
-    }
-    header h1 {
-      font-size: 2.8em;
-      color: #00eaff;
-      animation: neonPulse 2s infinite alternate;
-      margin: 0;
-    }
-    header h2 {
-      font-size: 1.3em;
-      color: #ff00cc;
-      margin-top: 10px;
-    }
-    nav {
-      margin-top: 20px;
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 15px;
-    }
-    nav a, nav button {
-      color: white;
-      text-decoration: none;
-      padding: 8px 18px;
-      border-radius: 25px;
-      background: linear-gradient(45deg, #ff00cc, #00eaff);
-      animation: glow 3s infinite alternate;
-      font-weight: bold;
-      transition: 0.3s;
-      border: none;
-      cursor: pointer;
-    }
-    nav a:hover, nav button:hover {
-      transform: scale(1.1);
-      background: linear-gradient(45deg, #00eaff, #ff00cc);
+    h1, h2 {
+      margin: 0 0 10px 0;
+      font-weight: 600;
     }
     section {
-      padding: 40px 15px;
+      padding: 80px 20px;
       text-align: center;
     }
-    .player iframe {
-      width: 100%;
-      max-width: 400px;
-      height: 200px;
-      border: none;
-      border-radius: 15px;
-      animation: glow 4s infinite alternate;
-    }
-    h3 {
-      color: #00eaff;
-      margin-bottom: 20px;
-      animation: neonPulse 2.5s infinite alternate;
-    }
-    .programacion {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px;
+    .container {
       max-width: 1000px;
-      margin: 0 auto;
+      margin: auto;
+    }
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: #1877f2;
+      color: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 30px;
+      z-index: 1000;
+    }
+    nav h1 {
+      margin: 0;
+      font-size: 1.5rem;
+    }
+    nav ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      gap: 20px;
+    }
+    nav ul li {
+      display: inline;
+    }
+    nav ul li a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      transition: opacity 0.3s;
+    }
+    nav ul li a:hover {
+      opacity: 0.7;
+    }
+    .menu-toggle {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+    }
+    .menu-toggle span {
+      height: 3px;
+      width: 25px;
+      background: white;
+      margin: 4px 0;
+      border-radius: 2px;
+      transition: 0.3s;
+    }
+    @media (max-width: 768px) {
+      nav ul {
+        position: absolute;
+        top: 60px;
+        right: 0;
+        background: #1877f2;
+        flex-direction: column;
+        align-items: flex-start;
+        width: 200px;
+        padding: 10px;
+        display: none;
+      }
+      nav ul.active {
+        display: flex;
+      }
+      .menu-toggle {
+        display: flex;
+      }
+    }
+    header {
+      background: #1877f2;
+      color: white;
+      padding: 120px 20px 60px 20px;
+      text-align: center;
+    }
+    header h1 {
+      font-size: 2.5rem;
+      margin-bottom: 10px;
     }
     .card {
-      background: rgba(255,255,255,0.05);
-      border: 1px solid #444;
+      background: #fff;
+      border-radius: 16px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
       padding: 20px;
-      border-radius: 12px;
-      animation: glow 5s infinite alternate;
+      margin: 20px auto;
+      max-width: 600px;
     }
-    .card strong {
-      color: #ff00cc;
+    .card iframe {
+      width: 100%;
+      border: none;
+      border-radius: 12px;
+      overflow: auto;
     }
     footer {
-      background: #0d0d0d;
-      padding: 20px;
+      background: #111827;
+      color: #fff;
       text-align: center;
-      font-size: 0.9em;
-      border-top: 1px solid #222;
+      padding: 20px;
     }
-    footer a {
-      color: #00eaff;
-      text-decoration: none;
+    .spacer {
+      height: 70px;
     }
-    footer a:hover {
-      text-decoration: underline;
+    .whatsapp-float {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background-color: #25d366;
+      border-radius: 50%;
+      width: 60px;
+      height: 60px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      z-index: 1001;
+      transition: transform 0.3s, background 0.3s;
+    }
+    .whatsapp-float:hover {
+      transform: scale(1.1);
+      background-color: #20b358;
+    }
+    .whatsapp-float svg {
+      width: 32px;
+      height: 32px;
+      fill: white;
     }
   </style>
 </head>
 <body>
+
+  <nav>
+    <h1>Mi Web</h1>
+    <div class="menu-toggle" onclick="toggleMenu()">
+      <span></span><span></span><span></span>
+    </div>
+    <ul id="menu">
+      <li><a href="#about" onclick="toggleMenu()">Sobre mí</a></li>
+      <li><a href="#services" onclick="toggleMenu()">Servicios</a></li>
+      <li><a href="#facebook" onclick="toggleMenu()">Facebook</a></li>
+      <li><a href="#contact" onclick="toggleMenu()">Contacto</a></li>
+    </ul>
+  </nav>
+
+  <div class="spacer"></div>
+
   <header>
-    <h1>🎧 FM ARENAS ONLINE</h1>
-    <h2>La Rioja, Argentina</h2>
-    <nav>
-      <a href="#vivo" data-es="En Vivo" data-en="Live">En Vivo</a>
-      <a href="#programacion" data-es="Programación" data-en="Schedule">Programación</a>
-      <a href="#contacto" data-es="Contacto" data-en="Contact">Contacto</a>
-      <button onclick="setLanguage('es')">ES</button>
-      <button onclick="setLanguage('en')">EN</button>
-    </nav>
+    <h1>Bienvenido a mi Landing Page</h1>
+    <p>Conoce más sobre mí y mis servicios</p>
   </header>
 
-  <section id="vivo" class="player">
-    <h3 data-es="📡 Escuchanos en vivo" data-en="📡 Listen Live">📡 Escuchanos en vivo</h3>
-    <iframe src="https://zeno.fm/player/fmarenas/"></iframe>
-  </section>
-
-  <section id="programacion">
-    <h3 data-es="🗓 Programación" data-en="🗓 Schedule">🗓 Programación</h3>
-    <div class="programacion">
-      <div class="card" data-es="<strong>Martes</strong><br>22:00 - 00:00 → La Noche con el Guille" data-en="<strong>Tuesday</strong><br>10:00 PM - 12:00 AM → The Night with Guille">...</div>
-      <div class="card" data-es="<strong>Viernes</strong><br>20:00 - 21:30 → La Noche con el Guille" data-en="<strong>Friday</strong><br>8:00 PM - 9:30 PM → The Night with Guille">...</div>
-      <div class="card" data-es="<strong>Viernes</strong><br>21:30 - 00:00 → La Cueva del Rock" data-en="<strong>Friday</strong><br>9:30 PM - 12:00 AM → The Rock Cave">...</div>
-      <div class="card" data-es="<strong>Sábado</strong><br>10:00 - 12:00 → La Casona del Chamamé" data-en="<strong>Saturday</strong><br>10:00 AM - 12:00 PM → The Chamamé House">...</div>
-      <div class="card" data-es="<strong>Domingo</strong><br>11:00 - 13:00 → La Casona del Chamamé" data-en="<strong>Sunday</strong><br>11:00 AM - 1:00 PM → The Chamamé House">...</div>
+  <section id="about">
+    <div class="container">
+      <h2>Sobre mí</h2>
+      <p>Soy [Tu Nombre], me dedico a [tu actividad].</p>
     </div>
   </section>
 
-  <section id="contacto">
-    <h3 data-es="📞 Contacto" data-en="📞 Contact">📞 Contacto</h3>
-    <p data-es="📧 Email: <a href='mailto:fmarenaslarioja@gmail.com'>fmarenaslarioja@gmail.com</a>" 
-       data-en="📧 Email: <a href='mailto:fmarenaslarioja@gmail.com'>fmarenaslarioja@gmail.com</a>"></p>
-    <p data-es="📱 WhatsApp: <a href='https://wa.me/543804805889' target='_blank'>+54 380 480 5889</a>" 
-       data-en="📱 WhatsApp: <a href='https://wa.me/543804805889' target='_blank'>+54 380 480 5889</a>"></p>
-    <p data-es="🌐 Redes sociales:<br><a href='https://www.facebook.com/fmarenas2015?mibextid=ZbWKwL' target='_blank'>Facebook</a> | <a href='https://www.instagram.com/fmarenaslariojaonline/' target='_blank'>Instagram</a>" 
-       data-en="🌐 Social Media:<br><a href='https://www.facebook.com/fmarenas2015?mibextid=ZbWKwL' target='_blank'>Facebook</a> | <a href='https://www.instagram.com/fmarenaslariojaonline/' target='_blank'>Instagram</a>"></p>
+  <section id="services" style="background:#eef2ff;">
+    <div class="container">
+      <h2>Servicios</h2>
+      <p>Ofrezco servicios como diseño web, marketing digital y creación de contenido.</p>
+    </div>
+  </section>
+
+  <section id="facebook">
+    <div class="container">
+      <h2>Mi Facebook</h2>
+      <div class="card">
+        <iframe src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2FTU_PAGINA&tabs=timeline&width=500&height=600&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true"
+          height="600" scrolling="yes" frameborder="0" allowfullscreen="true"
+          allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" style="background:#f3f4f6;">
+    <div class="container">
+      <h2>Contacto</h2>
+      <p>Puedes escribirme a: <b>tucorreo@ejemplo.com</b></p>
+    </div>
   </section>
 
   <footer>
-    <p data-es="© 2025 FM ARENAS ONLINE - La Rioja, Argentina" data-en="© 2025 FM ARENAS ONLINE - La Rioja, Argentina">© 2025 FM ARENAS ONLINE - La Rioja, Argentina</p>
+    <p>&copy; 2025 Mi Página Web - Todos los derechos reservados</p>
   </footer>
 
+  <a href="https://wa.me/1234567890?text=Hola%20quiero%20más%20información" class="whatsapp-float" target="_blank" aria-label="Chat en WhatsApp">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+      <path d="M16.001 3C9.373 3 4 8.373 4 15c0 2.649.865 5.102 2.328 7.09L4 29l7.137-2.313A11.927 11.927 0 0016.001 27c6.627 0 12-5.373 12-12s-5.373-12-12-12zm0 22c-1.934 0-3.734-.564-5.24-1.53l-.375-.238-4.243 1.375 1.395-4.125-.244-.383A9.958 9.958 0 016.001 15c0-5.514 4.486-10 10-10s10 4.486 10 10-4.486 10-10 10zm5.293-7.707c-.29-.145-1.713-.847-1.977-.944-.265-.098-.458-.145-.651.145-.194.29-.747.944-.915 1.137-.169.194-.338.218-.627.073-.29-.145-1.224-.451-2.33-1.437-.861-.767-1.44-1.713-1.609-2.003-.168-.29-.018-.447.127-.592.13-.13.29-.338.435-.507.145-.169.194-.29.29-.484.097-.194.048-.363-.024-.508-.073-.145-.651-1.572-.892-2.152-.235-.565-.476-.488-.651-.497l-.555-.01c-.194 0-.508.073-.774.363-.265.29-1.015.99-1.015 2.414s1.039 2.8 1.183 2.992c.145.194 2.048 3.127 4.96 4.385.693.299 1.232.478 1.653.612.694.22 1.325.189 1.826.115.557-.083 1.713-.699 1.955-1.374.242-.675.242-1.254.169-1.374-.072-.121-.265-.194-.555-.339z"/>
+    </svg>
+  </a>
+
   <script>
-    function setLanguage(lang) {
-      document.querySelectorAll('[data-es]').forEach(el => {
-        el.innerHTML = el.getAttribute('data-' + lang);
-      });
+    function toggleMenu() {
+      document.getElementById("menu").classList.toggle("active");
     }
-    setLanguage('es');
   </script>
 </body>
 </html>
