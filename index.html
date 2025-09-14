@@ -3,77 +3,163 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mi Landing Page</titlFM ARENAS ONLINEe>
-  <link rel="stylesheet" href="assets/style.css">
+  <title>FM ARENAS ONLINE - La Rioja, Argentina</title>
+  <link rel="icon" type="image/png" href="favicon.png">
+  <style>
+    @keyframes neonPulse {
+      0%, 100% { text-shadow: 0 0 5px #00eaff, 0 0 10px #00eaff, 0 0 20px #ff00cc; }
+      50% { text-shadow: 0 0 15px #ff00cc, 0 0 30px #00eaff; }
+    }
+    @keyframes glow {
+      0%, 100% { box-shadow: 0 0 10px #00eaff, 0 0 20px #ff00cc; }
+      50% { box-shadow: 0 0 20px #ff00cc, 0 0 40px #00eaff; }
+    }
+    body {
+      font-family: 'Arial', sans-serif;
+      margin: 0;
+      background: #000;
+      color: white;
+    }
+    header {
+      background: url('banner.png') no-repeat center center;
+      background-size: cover;
+      text-align: center;
+      padding: 80px 20px;
+    }
+    header h1 {
+      font-size: 2.8em;
+      color: #00eaff;
+      animation: neonPulse 2s infinite alternate;
+      margin: 0;
+    }
+    header h2 {
+      font-size: 1.3em;
+      color: #ff00cc;
+      margin-top: 10px;
+    }
+    nav {
+      margin-top: 20px;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+    nav a, nav button {
+      color: white;
+      text-decoration: none;
+      padding: 8px 18px;
+      border-radius: 25px;
+      background: linear-gradient(45deg, #ff00cc, #00eaff);
+      animation: glow 3s infinite alternate;
+      font-weight: bold;
+      transition: 0.3s;
+      border: none;
+      cursor: pointer;
+    }
+    nav a:hover, nav button:hover {
+      transform: scale(1.1);
+      background: linear-gradient(45deg, #00eaff, #ff00cc);
+    }
+    section {
+      padding: 40px 15px;
+      text-align: center;
+    }
+    .player iframe {
+      width: 100%;
+      max-width: 400px;
+      height: 200px;
+      border: none;
+      border-radius: 15px;
+      animation: glow 4s infinite alternate;
+    }
+    h3 {
+      color: #00eaff;
+      margin-bottom: 20px;
+      animation: neonPulse 2.5s infinite alternate;
+    }
+    .programacion {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    .card {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid #444;
+      padding: 20px;
+      border-radius: 12px;
+      animation: glow 5s infinite alternate;
+    }
+    .card strong {
+      color: #ff00cc;
+    }
+    footer {
+      background: #0d0d0d;
+      padding: 20px;
+      text-align: center;
+      font-size: 0.9em;
+      border-top: 1px solid #222;
+    }
+    footer a {
+      color: #00eaff;
+      text-decoration: none;
+    }
+    footer a:hover {
+      text-decoration: underline;
+    }
+  </style>
 </head>
 <body>
-
-  <nav>
-    <h1>Mi Web</h1>
-    <div class="menu-toggle" onclick="toggleMenu()">
-      <span></span><span></span><span></span>
-    </div>
-    <ul id="menu">
-      <li><a href="#about" onclick="toggleMenu()">Sobre mí</a></li>
-      <li><a href="#services" onclick="toggleMenu()">Servicios</a></li>
-      <li><a href="#facebook" onclick="toggleMenu()">Facebook</a></li>
-      <li><a href="#contact" onclick="toggleMenu()">Contacto</a></li>
-    </ul>
-  </nav>
-
-  <div class="spacer"></div>
-
   <header>
-    <h1>Bienvenido a FM ARENAS ONLINE</h1>
-    <p>Conoce más sobre mí y mis servicios</p>
+    <h1>🎧 FM ARENAS ONLINE</h1>
+    <h2>La Rioja, Argentina</h2>
+    <nav>
+      <a href="#vivo" data-es="En Vivo" data-en="Live">En Vivo</a>
+      <a href="#programacion" data-es="Programación" data-en="Schedule">Programación</a>
+      <a href="#contacto" data-es="Contacto" data-en="Contact">Contacto</a>
+      <button onclick="setLanguage('es')">ES</button>
+      <button onclick="setLanguage('en')">EN</button>
+    </nav>
   </header>
 
-  <section id="about">
-    <div class="container">
-      <h2>Sobre mí</h2>
-      <p>Soy [FM ARENAS ONLINE], me dedico a [RADIO NOTICIAS ].</p>
+  <section id="vivo" class="player">
+    <h3 data-es="📡 Escuchanos en vivo" data-en="📡 Listen Live">📡 Escuchanos en vivo</h3>
+    <iframe src="https://zeno.fm/player/fmarenas/"></iframe>
+  </section>
+
+  <section id="programacion">
+    <h3 data-es="🗓 Programación" data-en="🗓 Schedule">🗓 Programación</h3>
+    <div class="programacion">
+      <div class="card" data-es="<strong>Martes</strong><br>22:00 - 00:00 → La Noche con el Guille" data-en="<strong>Tuesday</strong><br>10:00 PM - 12:00 AM → The Night with Guille">...</div>
+      <div class="card" data-es="<strong>Viernes</strong><br>20:00 - 21:30 → La Noche con el Guille" data-en="<strong>Friday</strong><br>8:00 PM - 9:30 PM → The Night with Guille">...</div>
+      <div class="card" data-es="<strong>Viernes</strong><br>21:30 - 00:00 → La Cueva del Rock" data-en="<strong>Friday</strong><br>9:30 PM - 12:00 AM → The Rock Cave">...</div>
+      <div class="card" data-es="<strong>Sábado</strong><br>10:00 - 12:00 → La Casona del Chamamé" data-en="<strong>Saturday</strong><br>10:00 AM - 12:00 PM → The Chamamé House">...</div>
+      <div class="card" data-es="<strong>Domingo</strong><br>11:00 - 13:00 → La Casona del Chamamé" data-en="<strong>Sunday</strong><br>11:00 AM - 1:00 PM → The Chamamé House">...</div>
     </div>
   </section>
 
-  <section id="services" style="background:#eef2ff;">
-    <div class="container">
-      <h2>Servicios</h2>
-      <p>Ofrezco servicios como diseño web, marketing digital y creación de contenido.</p>
-    </div>
-  </section>
-
-  <section id="facebook">
-    <div class="container">
-      <h2>Mi Facebook</h2>
-      <div class="card">
-        <iframe src="https://www.facebook.com/https://www.facebook.com/profile.php?id=100092439705105rue&hide_cover=false&show_facepile=true"
-          height="600" scrolling="yes" frameborder="0" allowfullscreen="true"
-          allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
-      </div>
-    </div>
-  </section>
-
-  <section id="contact" style="background:#f3f4f6;">
-    <div class="container">
-      <h2>Contacto</h2>
-      <p>Puedes escribirme a: <b>fmarenaslarioja@gmail.com</b></p>
-    </div>
+  <section id="contacto">
+    <h3 data-es="📞 Contacto" data-en="📞 Contact">📞 Contacto</h3>
+    <p data-es="📧 Email: <a href='mailto:fmarenaslarioja@gmail.com'>fmarenaslarioja@gmail.com</a>" 
+       data-en="📧 Email: <a href='mailto:fmarenaslarioja@gmail.com'>fmarenaslarioja@gmail.com</a>"></p>
+    <p data-es="📱 WhatsApp: <a href='https://wa.me/543804805889' target='_blank'>+54 380 480 5889</a>" 
+       data-en="📱 WhatsApp: <a href='https://wa.me/543804805889' target='_blank'>+54 380 480 5889</a>"></p>
+    <p data-es="🌐 Redes sociales:<br><a href='https://www.facebook.com/fmarenas2015?mibextid=ZbWKwL' target='_blank'>Facebook</a> | <a href='https://www.instagram.com/fmarenaslariojaonline/' target='_blank'>Instagram</a>" 
+       data-en="🌐 Social Media:<br><a href='https://www.facebook.com/fmarenas2015?mibextid=ZbWKwL' target='_blank'>Facebook</a> | <a href='https://www.instagram.com/fmarenaslariojaonline/' target='_blank'>Instagram</a>"></p>
   </section>
 
   <footer>
-    <p>&copy; 2025 FM ARENAS ONLINE - Todos los derechos reservados</p>
+    <p data-es="© 2025 FM ARENAS ONLINE - La Rioja, Argentina" data-en="© 2025 FM ARENAS ONLINE - La Rioja, Argentina">© 2025 FM ARENAS ONLINE - La Rioja, Argentina</p>
   </footer>
 
-  <a href="https://wa.me/3804805889?text=Hola%20quiero%20más%20información" class="whatsapp-float" target="_blank" aria-label="Chat en WhatsApp">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
-      <path d="M16.001 3C9.373 3 4 8.373 4 15c0 2.649.865 5.102 2.328 7.09L4 29l7.137-2.313A11.927 11.927 0 0016.001 27c6.627 0 12-5.373 12-12s-5.373-12-12-12zm0 22c-1.934 0-3.734-.564-5.24-1.53l-.375-.238-4.243 1.375 1.395-4.125-.244-.383A9.958 9.958 0 016.001 15c0-5.514 4.486-10 10-10s10 4.486 10 10-4.486 10-10 10zm5.293-7.707c-.29-.145-1.713-.847-1.977-.944-.265-.098-.458-.145-.651.145-.194.29-.747.944-.915 1.137-.169.194-.338.218-.627.073-.29-.145-1.224-.451-2.33-1.437-.861-.767-1.44-1.713-1.609-2.003-.168-.29-.018-.447.127-.592.13-.13.29-.338.435-.507.145-.169.194-.29.29-.484.097-.194.048-.363-.024-.508-.073-.145-.651-1.572-.892-2.152-.235-.565-.476-.488-.651-.497l-.555-.01c-.194 0-.508.073-.774.363-.265.29-1.015.99-1.015 2.414s1.039 2.8 1.183 2.992c.145.194 2.048 3.127 4.96 4.385.693.299 1.232.478 1.653.612.694.22 1.325.189 1.826.115.557-.083 1.713-.699 1.955-1.374.242-.675.242-1.254.169-1.374-.072-.121-.265-.194-.555-.339z"/>
-    </svg>
-  </a>
-
   <script>
-    function toggleMenu() {
-      document.getElementById("menu").classList.toggle("active");
+    function setLanguage(lang) {
+      document.querySelectorAll('[data-es]').forEach(el => {
+        el.innerHTML = el.getAttribute('data-' + lang);
+      });
     }
+    setLanguage('es');
   </script>
 </body>
 </html>
