@@ -2,190 +2,164 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>FM Arenas - Portal Interactivo</title>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FM ARENAS ONLINE - La Rioja, Argentina</title>
+  <link rel="icon" type="image/png" href="favicon.png">
   <style>
+    @keyframes neonPulse {
+      0%, 100% { text-shadow: 0 0 5px #00eaff, 0 0 10px #00eaff, 0 0 20px #ff00cc; }
+      50% { text-shadow: 0 0 15px #ff00cc, 0 0 30px #00eaff; }
+    }
+    @keyframes glow {
+      0%, 100% { box-shadow: 0 0 10px #00eaff, 0 0 20px #ff00cc; }
+      50% { box-shadow: 0 0 20px #ff00cc, 0 0 40px #00eaff; }
+    }
     body {
-      font-family: 'Roboto', sans-serif;
-      background: #f0f2f5;
+      font-family: 'Arial', sans-serif;
       margin: 0;
-      padding: 0;
-      color: #333;
+      background: #000;
+      color: white;
     }
     header {
-      background: #1877f2;
-      color: white;
-      padding: 25px;
+      background: url('banner.png') no-repeat center center;
+      background-size: cover;
       text-align: center;
-      font-size: 2.2em;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+      padding: 80px 20px;
     }
-    #controls {
-      max-width: 900px;
-      margin: 20px auto;
+    header h1 {
+      font-size: 2.8em;
+      color: #00eaff;
+      animation: neonPulse 2s infinite alternate;
+      margin: 0;
+    }
+    header h2 {
+      font-size: 1.3em;
+      color: #ff00cc;
+      margin-top: 10px;
+    }
+    nav {
+      margin-top: 20px;
       display: flex;
-      justify-content: space-between;
+      justify-content: center;
       flex-wrap: wrap;
-      padding: 0 15px;
+      gap: 15px;
     }
-    #controls input, #controls select {
-      padding: 8px 12px;
-      font-size: 1em;
-      margin-bottom: 10px;
-      border-radius: 5px;
-      border: 1px solid #ccc;
-      flex: 1 1 45%;
+    nav a, nav button {
+      color: white;
+      text-decoration: none;
+      padding: 8px 18px;
+      border-radius: 25px;
+      background: linear-gradient(45deg, #ff00cc, #00eaff);
+      animation: glow 3s infinite alternate;
+      font-weight: bold;
+      transition: 0.3s;
+      border: none;
+      cursor: pointer;
     }
-    #fb-feed {
-      max-width: 900px;
-      margin: 20px auto;
-      padding: 0 15px;
+    nav a:hover, nav button:hover {
+      transform: scale(1.1);
+      background: linear-gradient(45deg, #00eaff, #ff00cc);
     }
-    .post {
-      background: white;
-      margin-bottom: 30px;
-      padding: 20px;
+    section {
+      padding: 40px 15px;
+      text-align: center;
+    }
+    .player iframe {
+      width: 100%;
+      max-width: 400px;
+      height: 200px;
+      border: none;
       border-radius: 15px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-      opacity: 0;
-      transform: translateY(20px);
-      transition: all 0.6s ease;
+      animation: glow 4s infinite alternate;
     }
-    .post.visible { opacity: 1; transform: translateY(0); }
-    .post.text-post { background: #e0e0e0; border-left: 5px solid #999; }
-    .post.photo-post { border-left: 5px solid #4CAF50; }
-    .post.video-post { border-left: 5px solid #2196F3; }
-    .post img, .post video { max-width: 100%; border-radius: 10px; margin-top: 15px; display: block; }
-    .carousel { position: relative; overflow: hidden; border-radius: 10px; margin-top: 15px; }
-    .carousel img { width: 100%; display: none; }
-    .carousel img.active { display: block; }
-    .post a { text-decoration: none; color: #1877f2; font-weight: 700; }
-    .post small { display: block; margin-top: 10px; color: #555; font-size: 0.9em; }
-    .share-buttons { margin-top: 10px; }
-    .share-buttons a {
-      margin-right: 10px; text-decoration: none; color: white; padding: 6px 12px;
-      border-radius: 5px; font-size: 0.9em; font-weight: bold;
+    h3 {
+      color: #00eaff;
+      margin-bottom: 20px;
+      animation: neonPulse 2.5s infinite alternate;
     }
-    .facebook-share { background: #1877f2; }
-    .whatsapp-share { background: #25D366; }
-    @media (max-width: 600px) {
-      header { font-size: 1.8em; }
-      #controls { flex-direction: column; }
-      #controls input, #controls select { flex: 1 1 100%; }
-      .post { padding: 15px; }
+    .programacion {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    .card {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid #444;
+      padding: 20px;
+      border-radius: 12px;
+      animation: glow 5s infinite alternate;
+    }
+    .card strong {
+      color: #ff00cc;
+    }
+    footer {
+      background: #0d0d0d;
+      padding: 20px;
+      text-align: center;
+      font-size: 0.9em;
+      border-top: 1px solid #222;
+    }
+    footer a {
+      color: #00eaff;
+      text-decoration: none;
+    }
+    footer a:hover {
+      text-decoration: underline;
     }
   </style>
 </head>
 <body>
-  <header>FM Arenas - Portal Interactivo</header>
+  <header>
+    <h1>🎧 FM ARENAS ONLINE</h1>
+    <h2>La Rioja, Argentina</h2>
+    <nav>
+      <a href="#vivo" data-es="En Vivo" data-en="Live">En Vivo</a>
+      <a href="#programacion" data-es="Programación" data-en="Schedule">Programación</a>
+      <a href="#contacto" data-es="Contacto" data-en="Contact">Contacto</a>
+      <button onclick="setLanguage('es')">ES</button>
+      <button onclick="setLanguage('en')">EN</button>
+    </nav>
+  </header>
 
-  <div id="controls">
-    <input type="text" id="searchInput" placeholder="Buscar palabras clave...">
-    <select id="filterSelect">
-      <option value="all">Todos los tipos</option>
-      <option value="text-post">Solo Texto</option>
-      <option value="photo-post">Solo Fotos</option>
-      <option value="video-post">Solo Videos</option>
-    </select>
-  </div>
+  <section id="vivo" class="player">
+    <h3 data-es="📡 Escuchanos en vivo" data-en="📡 Listen Live">📡 Escuchanos en vivo</h3>
+    <iframe src="https://zeno.fm/player/fmarenas/"></iframe>
+  </section>
 
-  <div id="fb-feed">Cargando publicaciones...</div>
+  <section id="programacion">
+    <h3 data-es="🗓 Programación" data-en="🗓 Schedule">🗓 Programación</h3>
+    <div class="programacion">
+      <div class="card" data-es="<strong>Martes</strong><br>22:00 - 00:00 → La Noche con el Guille" data-en="<strong>Tuesday</strong><br>10:00 PM - 12:00 AM → The Night with Guille">...</div>
+      <div class="card" data-es="<strong>Viernes</strong><br>20:00 - 21:30 → La Noche con el Guille" data-en="<strong>Friday</strong><br>8:00 PM - 9:30 PM → The Night with Guille">...</div>
+      <div class="card" data-es="<strong>Viernes</strong><br>21:30 - 00:00 → La Cueva del Rock" data-en="<strong>Friday</strong><br>9:30 PM - 12:00 AM → The Rock Cave">...</div>
+      <div class="card" data-es="<strong>Sábado</strong><br>10:00 - 12:00 → La Casona del Chamamé" data-en="<strong>Saturday</strong><br>10:00 AM - 12:00 PM → The Chamamé House">...</div>
+      <div class="card" data-es="<strong>Domingo</strong><br>11:00 - 13:00 → La Casona del Chamamé" data-en="<strong>Sunday</strong><br>11:00 AM - 1:00 PM → The Chamamé House">...</div>
+    </div>
+  </section>
+
+  <section id="contacto">
+    <h3 data-es="📞 Contacto" data-en="📞 Contact">📞 Contacto</h3>
+    <p data-es="📧 Email: <a href='mailto:fmarenaslarioja@gmail.com'>fmarenaslarioja@gmail.com</a>" 
+       data-en="📧 Email: <a href='mailto:fmarenaslarioja@gmail.com'>fmarenaslarioja@gmail.com</a>"></p>
+    <p data-es="📱 WhatsApp: <a href='https://wa.me/543804805889' target='_blank'>+54 380 480 5889</a>" 
+       data-en="📱 WhatsApp: <a href='https://wa.me/543804805889' target='_blank'>+54 380 480 5889</a>"></p>
+    <p data-es="🌐 Redes sociales:<br><a href='https://www.facebook.com/fmarenas2015?mibextid=ZbWKwL' target='_blank'>Facebook</a> | <a href='https://www.instagram.com/fmarenaslariojaonline/' target='_blank'>Instagram</a>" 
+       data-en="🌐 Social Media:<br><a href='https://www.facebook.com/fmarenas2015?mibextid=ZbWKwL' target='_blank'>Facebook</a> | <a href='https://www.instagram.com/fmarenaslariojaonline/' target='_blank'>Instagram</a>"></p>
+  </section>
+
+  <footer>
+    <p data-es="© 2025 FM ARENAS ONLINE - La Rioja, Argentina" data-en="© 2025 FM ARENAS ONLINE - La Rioja, Argentina">© 2025 FM ARENAS ONLINE - La Rioja, Argentina</p>
+  </footer>
 
   <script>
-    const PAGE_ID = "100092439705105"; // ID de tu página
-    const TOKEN = "TU_ACCESS_TOKEN_AQUI"; // Reemplazar con tu Page Access Token
-    let allPosts = [];
-
-    function renderPosts(posts) {
-      const feed = document.getElementById('fb-feed');
-      feed.innerHTML = "";
-      posts.forEach((post, idx) => {
-        const div = document.createElement('div');
-        div.className = `post ${post.typeClass}`;
-        let content = `<p>${post.message || ''}</p>`;
-
-        if(post.attachmentsHTML) content += post.attachmentsHTML;
-
-        content += `<p><a href="${post.permalink_url}" target="_blank">Ver en Facebook</a></p>`;
-        content += `<small>Publicado el ${new Date(post.created_time).toLocaleString()}</small>`;
-        content += `
-          <div class="share-buttons">
-            <a class="facebook-share" href="https://www.facebook.com/sharer/sharer.php?u=${post.permalink_url}" target="_blank">Facebook</a>
-            <a class="whatsapp-share" href="https://api.whatsapp.com/send?text=${encodeURIComponent(post.permalink_url)}" target="_blank">WhatsApp</a>
-          </div>
-        `;
-        div.innerHTML = content;
-        feed.appendChild(div);
-
-        setTimeout(() => div.classList.add('visible'), idx * 200);
-      });
-
-      const carousels = document.querySelectorAll('.carousel');
-      carousels.forEach(carousel => {
-        let imgs = carousel.querySelectorAll('img');
-        let index = 0;
-        setInterval(() => {
-          imgs[index].classList.remove('active');
-          index = (index + 1) % imgs.length;
-          imgs[index].classList.add('active');
-        }, 4000);
+    function setLanguage(lang) {
+      document.querySelectorAll('[data-es]').forEach(el => {
+        el.innerHTML = el.getAttribute('data-' + lang);
       });
     }
-
-    function filterPosts() {
-      const keyword = document.getElementById('searchInput').value.toLowerCase();
-      const typeFilter = document.getElementById('filterSelect').value;
-
-      const filtered = allPosts.filter(post => {
-        const matchesType = typeFilter === 'all' || post.typeClass === typeFilter;
-        const matchesKeyword = post.message && post.message.toLowerCase().includes(keyword);
-        return matchesType && matchesKeyword;
-      });
-
-      renderPosts(filtered);
-    }
-
-    fetch(`https://graph.facebook.com/v21.0/${PAGE_ID}/posts?fields=message,created_time,full_picture,permalink_url,attachments{media,type,subattachments}&access_token=${TOKEN}`)
-      .then(res => res.json())
-      .then(data => {
-        allPosts = data.data.map(post => {
-          let typeClass = "text-post";
-          let attachmentsHTML = "";
-
-          if(post.attachments && post.attachments.data.length > 0){
-            post.attachments.data.forEach(att => {
-              if(att.type === "photo") typeClass = "photo-post";
-              if(att.type === "video") typeClass = "video-post";
-
-              if(att.type === "photo" && att.media && att.media.image){
-                attachmentsHTML += `<img src="${att.media.image.src}" alt="Imagen de publicación">`;
-              }
-              if(att.type === "video" && att.media && att.media.source){
-                attachmentsHTML += `<video controls src="${att.media.source}"></video>`;
-              }
-              if(att.subattachments && att.subattachments.data.length > 0){
-                let carousel = '<div class="carousel">';
-                att.subattachments.data.forEach((sub,i) => {
-                  carousel += `<img src="${sub.media.image.src}" class="${i===0?'active':''}">`;
-                });
-                carousel += '</div>';
-                attachmentsHTML += carousel;
-              }
-            });
-          }
-
-          return { ...post, typeClass, attachmentsHTML };
-        });
-
-        renderPosts(allPosts);
-      })
-      .catch(err => {
-        document.getElementById('fb-feed').innerHTML = "Error cargando publicaciones 😢";
-        console.error(err);
-      });
-
-    document.getElementById('searchInput').addEventListener('input', filterPosts);
-    document.getElementById('filterSelect').addEventListener('change', filterPosts);
+    setLanguage('es');
   </script>
 </body>
 </html>
